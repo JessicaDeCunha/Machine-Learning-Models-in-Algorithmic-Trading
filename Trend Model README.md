@@ -14,7 +14,7 @@ We employed several Machine Learning Algorithms to build an effective Algorithmi
 4. Concat all the data into a signal DataFrame.
 
 ### Feature Selection
-
+ 
 Below is the list of the final features we used to build our model:
 
 ![X_features](Images/X_features.PNG)
