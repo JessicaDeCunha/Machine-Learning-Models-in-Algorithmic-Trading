@@ -1,3 +1,14 @@
+# Intoduction
+
+Algorithmic trading has become a buzzword.  More and more people seem to be entering this fast growing domain.  But what makes a good trading algo?  One of the key consideration when deciding to go into algo trading, is determining what strategy to use.  In this project we will seek to compare two models to see which is better at predicting the market. We will use  ecomnomic indicators in one model which we will call our "trend" model  and technical indicators for the next which we will refer to as our "trade" model.
+
+
+
+# Hypothiesis
+Predicting the stock market using economic indicators creates a more reliable model than a model based on technical indicators.
+
+
+
 # Trend Model
 ***_Project Goal:_*** to build a Machine Learning Model using fundamental economic inputs to predict monthly S&P500 returns. Then using this model, we will build an algorithmic trading strategy aiming to outperform the S&P500 return.
 
@@ -146,3 +157,86 @@ Shown below is the cumulative return of the models vs the benchmark over the tes
 ![Algo_return](Images/Algo_strategy_return.PNG)
 
 Only the Random Forest Algo strategy outperformed the benchmark, and all of that outperformance was from 2020. The model accurately predicted February and March would be negative return months, which also happened to be large drawdown months of -8% and -12% respectively. The model than had us buy back into the market at the lows of early April, helping us capture the strong equity recovery from April through to end of July. The other two models both underperformed the benchmark quite significantly. Interestingly the Gradient Boosting model also predicted the negative return in March of 2020, however the model also called on us to continuing shorting the market through the strong equity gains of May 2020 through to end of July.
+
+# Trade Model
+
+## Process
+​
+1. Download stock prices data from yahoo finance for ticker "SPY" 
+3. Select column for closing prices and calculated "Daily returns"
+
+
+### Feature Selection
+
+We constructed the following calculations to obtain our feautre signals:
+​
+* Exponential Moving Average of Closing Prices, used
+to calculate Feature #1: "crossover_signal"
+Based on:
+short_window = 1
+long_window = 10
+
+Plot of Exponential Moving Average of Closing Prices 
+![closing_prices](Images/closing_prices.PNG)
+
+
+
+
+* Exponential Moving Average of Daily Return Volatility, which was Used to calculate "vol_trend_signal"
+Based on:
+short_window = 1
+long_window = 10
+
+Plot of Exponential Moving Average of Daily Return Volatility 
+![Volatility](Images/daily_return_volatility.PNG)
+
+
+
+* Bollinger Bands
+Used to calculate "bollinger_signal"
+window = 20
+
+Plot of Bollinger Bands
+![Bollinger](Images/bollinger_bands.PNG)
+
+
+These features will be used to predict whether the market will have a positive or negative return the following day
+
+X Features
+![Features](Images/x_variable.PNG)
+
+
+### Creating the model
+
+The data was fitted and trained using 3 different models for comparison:
+* Random Forrest Classifier (RFC)
+* Gradient Boosting Classifier (GBC)
+* Support Vector Machine (SVM)
+
+
+### Model evaluations:
+
+All 3 models had an accuracy score of just over 50% with a bias toward the positive class.  In fact, both the RFC and the GBC returned identical results for all 3 matrices below.
+![Scores](Images/RFC_evaluation.PNG)
+
+The SVM showed a slightly better accuracy score however it was unable to predict anything in the negative class, as seen in the confusion matrix:
+![Scores](Images/SVM_evaluation.PNG)
+
+
+
+### New evaluation metric : Matthew Correlation Coefficient score
+RFC 0.004256286893527013
+SVM 0.00
+This implies the model is no better than a random prediction.
+
+
+Although the SVM had a higher accuracy score, based on the MCC score, the RFC would still be considered a better nodel.
+
+
+
+below is the cumulative returns of the RFC models vs the benchmark over the test data set period.
+![Cumul. Returbs](Images/cumulative_returns.PNG)
+
+# Conclusions
+
+
