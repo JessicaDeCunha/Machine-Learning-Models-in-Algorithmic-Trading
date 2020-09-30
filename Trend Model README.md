@@ -6,7 +6,7 @@ We employed several Machine Learning Algorithms to build an effective Algorithmi
 
 ![Algo_return](Images/Algo_strategy_return.PNG)
 
-## Process
+## Processs
 
 1. Use the API from the St.Louis Federal Reserve website to pull several fundamental economic indicators to be used as features in our model.
 2. Data Preparation: clean and prepare the data to be inputted as features.
@@ -14,7 +14,7 @@ We employed several Machine Learning Algorithms to build an effective Algorithmi
 4. Concat all the data into a signal DataFrame.
 
 ### Feature Selection
-
+ 
 Below is the list of the final features we used to build our model:
 
 ![X_features](Images/X_features.PNG)
