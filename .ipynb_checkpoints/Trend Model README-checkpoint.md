@@ -158,13 +158,6 @@ Shown below is the cumulative return of the models vs the benchmark over the tes
 
 Only the Random Forest Algo strategy outperformed the benchmark, and all of that outperformance was from 2020. The model accurately predicted February and March would be negative return months, which also happened to be large drawdown months of -8% and -12% respectively. The model than had us buy back into the market at the lows of early April, helping us capture the strong equity recovery from April through to end of July. The other two models both underperformed the benchmark quite significantly. Interestingly the Gradient Boosting model also predicted the negative return in March of 2020, however the model also called on us to continuing shorting the market through the strong equity gains of May 2020 through to end of July.
 
-***Why do the models predict different results in 2020?***
-
-Fundamental economic data has been extremely weak due to the COVID-19 outbreak and subsequent economic shutdown in the US. Looking at our features, Capacity Utilization and Jobless Claims have fully reflected the scale of the economic damage caused by the outbreak. Therefore models that due a better job of handling imbalanced data (SMOTE and Gradient Boosting), were more likely to associate this fundamental economic deterioration to prior periods of negative stock returns.
-
-However, our features also reflected the extradordinary stimulus provided by the US Federal Government and the US Federal Reserve (US Disposable Income and M2 actually increased since March). Therefore, unlike prior recessions the usual economic signals that would precipitate a downturn in US equities have clearly been disrupted.
-
-
 # Trade Model
 
 ## Process
@@ -179,10 +172,9 @@ We constructed the following calculations to obtain our feautre signals:
 ​
 * Exponential Moving Average of Closing Prices, used
 to calculate Feature #1: "crossover_signal"
-
 Based on:
-- short_window = 50
-- long_window = 200
+short_window = 1
+long_window = 10
 
 Plot of Exponential Moving Average of Closing Prices 
 ![closing_prices](Images/closing_prices.PNG)
@@ -191,10 +183,9 @@ Plot of Exponential Moving Average of Closing Prices
 
 
 * Exponential Moving Average of Daily Return Volatility, which was Used to calculate "vol_trend_signal"
-- 
 Based on:
-- short_window = 50
-- long_window = 200
+short_window = 1
+long_window = 10
 
 Plot of Exponential Moving Average of Daily Return Volatility 
 ![Volatility](Images/daily_return_volatility.PNG)
@@ -234,8 +225,8 @@ The SVM showed a slightly better accuracy score however it was unable to predict
 
 
 ### New evaluation metric : Matthew Correlation Coefficient score
-- RFC 0.007742193629239456
-- SVM 0.00
+RFC 0.004256286893527013
+SVM 0.00
 This implies the model is no better than a random prediction.
 
 
@@ -243,10 +234,9 @@ Although the SVM had a higher accuracy score, based on the MCC score, the RFC wo
 
 
 
-Below is the cumulative returns of the RFC models vs the benchmark over the test data set period.  For the most part it is on par with the index, however eventually, the index ends up slighly better.
-
+below is the cumulative returns of the RFC models vs the benchmark over the test data set period.
 ![Cumul. Returbs](Images/cumulative_returns.PNG)
 
 # Conclusions
- If we compare the better performing "Trade" model with the better performing "Trend" model, we can conclude that the model based on economic indicators, is better at predicting the direction of the market.
+
 
