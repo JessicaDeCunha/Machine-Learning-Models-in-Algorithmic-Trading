@@ -158,6 +158,13 @@ Shown below is the cumulative return of the models vs the benchmark over the tes
 
 Only the Random Forest Algo strategy outperformed the benchmark, and all of that outperformance was from 2020. The model accurately predicted February and March would be negative return months, which also happened to be large drawdown months of -8% and -12% respectively. The model than had us buy back into the market at the lows of early April, helping us capture the strong equity recovery from April through to end of July. The other two models both underperformed the benchmark quite significantly. Interestingly the Gradient Boosting model also predicted the negative return in March of 2020, however the model also called on us to continuing shorting the market through the strong equity gains of May 2020 through to end of July.
 
+***Why do the models predict different results in 2020?***
+
+Fundamental economic data has been extremely weak due to the COVID-19 outbreak and subsequent economic shutdown in the US. Looking at our features, Capacity Utilization and Jobless Claims have fully reflected the scale of the economic damage caused by the outbreak. Therefore models that due a better job of handling imbalanced data (SMOTE and Gradient Boosting), were more likely to associate this fundamental economic deterioration to prior periods of negative stock returns.
+
+However, our features also reflected the extradordinary stimulus provided by the US Federal Government and the US Federal Reserve (US Disposable Income and M2 actually increased since March). Therefore, unlike prior recessions the usual economic signals that would precipitate a downturn in US equities have clearly been disrupted.
+
+
 # Trade Model
 
 ## Process
