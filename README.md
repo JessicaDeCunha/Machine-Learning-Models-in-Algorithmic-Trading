@@ -183,8 +183,8 @@ However, our features also reflected the extraordinary stimulus provided by the 
 
 ## Process
 ​
-1. Download stock prices data from yahoo finance for ticker "SPY" 
-3. Select column for closing prices and calculated "Daily returns"
+1. Download stock prices data ((1993- present)) from yahoo finance for ticker "SPY"  
+2. Select column for closing prices and calculated "Daily returns"
 
 
 ## Feature Selection
@@ -223,6 +223,7 @@ These features will be used to predict whether the market will have a positive o
 
 ### Creating the model
 
+We used 70% of or data as the training data and 30% for testing. (Trained on 19 years; Tested on 8 years)
 The data was fitted and trained using 3 different models for comparison:
 * Random Forrest Classifier (RFC)
 * Gradient Boosting Classifier (GBC)
