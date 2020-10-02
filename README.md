@@ -187,16 +187,11 @@ However, our features also reflected the extraordinary stimulus provided by the 
 3. Select column for closing prices and calculated "Daily returns"
 
 
-### Feature Selection
+## Feature Selection
 
-We constructed the following calculations to obtain our feautre signals:
+We constructed the features, based on the following three calculations:
 ​
-* Exponential Moving Average of Closing Prices, used
-to calculate Feature #1: "crossover_signal"
-
-Based on:
-- short_window = 50
-- long_window = 200
+* (1) Exponential Moving Average of Closing Prices, used to calculate our first Feature, which is the  **"crossover_signal"**.  For this we used a short_window of 50 and a long_window of 200
 
 Plot of Exponential Moving Average of Closing Prices 
 ![closing_prices](Images/closing_prices.PNG)
@@ -204,28 +199,25 @@ Plot of Exponential Moving Average of Closing Prices
 
 
 
-* Exponential Moving Average of Daily Return Volatility, which was Used to calculate "vol_trend_signal"
-- 
-Based on:
-- short_window = 50
-- long_window = 200
+* (2) Exponential Moving Average of Daily Return Volatility,  used to calculate our second feature, which is **"vol_trend_signal"**'  For this we used a short_window of 50 and a long_window of 200
+
 
 Plot of Exponential Moving Average of Daily Return Volatility 
 ![Volatility](Images/daily_return_volatility.PNG)
 
 
 
-* Bollinger Bands
-Used to calculate "bollinger_signal"
-window = 20
+* (3) Bollinger Bands, used to calculate our third signal, which is **"bollinger_signal"**.  For this we used a window of 20  
 
 Plot of Bollinger Bands
 ![Bollinger](Images/bollinger_bands.PNG)
 
 
+Below is the list of the final features we used to build our models
 These features will be used to predict whether the market will have a positive or negative return the following day
 
-X Features
+- X Features
+
 ![Features](Images/x_variable.PNG)
 
 
@@ -240,20 +232,22 @@ The data was fitted and trained using 3 different models for comparison:
 ### Model evaluations:
 
 All 3 models had an accuracy score of just over 50% with a bias toward the positive class.  In fact, both the RFC and the GBC returned identical results for all 3 matrices below.
+
 ![Scores](Images/RFC_evaluation.PNG)
 
 The SVM showed a slightly better accuracy score however it was unable to predict anything in the negative class, as seen in the confusion matrix:
+
+
 ![Scores](Images/SVM_evaluation.PNG)
 
 
 
 ### New evaluation metric : Matthew Correlation Coefficient score
-- RFC 0.007742193629239456
-- SVM 0.00
-This implies the model is no better than a random prediction.
+- RFC : 0.007742193629239456
+- SVM : 0.00 (This implies the model is no better than a random prediction).
 
 
-Although the SVM had a higher accuracy score, based on the MCC score, the RFC would still be considered a better nodel.
+Although the SVM had a higher accuracy score, based on the MCC score, the RFC would still be considered a better model.
 
 
 
@@ -262,5 +256,5 @@ Below is the cumulative returns of the RFC models vs the benchmark over the test
 ![Cumul. Returbs](Images/cumulative_returns.PNG)
 
 # Conclusions
- If we compare the better performing "Trade" model with the better performing "Trend" model, we can conclude that the model based on economic indicators, is better at predicting the direction of the market.
+ If we compare the best performing "Trade" model with the best performing "Trend" model, we can conclude that the model based on economic indicators, is better at predicting the direction of the market.
 
